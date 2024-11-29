@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaybolan Zaman - Başlangıç</title>
+    <style>
+        /* Genel Sayfa ve Arka Plan */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: url('https://phoneky.co.uk/thumbs/screensavers/down/nature/sunsetbyto_0ADInuNX.gif') no-repeat center center fixed;
+        }
+
+        .intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .intro-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(8px);
+            z-index: -1;
+            opacity: 0.85;
+        }
+
+        .intro-content {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 700px;
+            box-sizing: border-box;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @media (max-width: 1080px) {
+             {
+                font-size: 10em;
+            }
+
+        .intro-content h1 {
+            font-size: 60px;
+            margin: 0;
+            padding-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+            color: #ffcc00;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: #ccc;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 30px;
+            opacity: 0.9;
+        }
+
+        .button-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .start-btn, .about-btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .start-btn {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .start-btn:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        .about-btn {
+            background-color: #2196f3;
+            color: white;
+        }
+
+        .about-btn:hover {
+            background-color: #1976d2;
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            visibility: hidden;
+            transition: visibility 0.5s;
+        }
+
+        /* Hikaye Popup */
+        .story-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-sizing: border-box;
+            z-index: 999;
+        }
+
+        .story-popup h2 {
+            color: #ffcc00;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .story-popup p {
+            color: #ddd;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .close-btn {
+            padding: 10px 20px;
+            background-color: #ff6347;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #e53e3e;
+        }
+
+        /* Animasyonlar */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-screen">
+        <div class="intro-background"></div>
+        <div class="intro-content">
+            <h1>Kaybolan Zaman</h1>
+            <p class="subtitle">Bir zamanlar senin olan ama şimdi kaybolmuş anıların izinden git!</p>
+            <p class="intro-text">
+                Hayat bir seri anıdan ibarettir. Ancak bazı anlar zamanla kaybolur, unutulur. 
+                Bugün, kaybolan zamanların, hatıraların ve anlamların peşine düşeceksin. 
+                Kaybolan her anı geri getirmek, bir zamanlar seni sen yapan her şeyi bulmak senin elinde!
+            </p>
+            <div class="button-container">
+                <button id="start-btn" class="start-btn">Başla</button>
+                <button id="about-btn" class="about-btn">Hikaye</button>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+
+    <div id="story-popup" class="story-popup">
+        <div class="story-popup-content">
+            <h2>Hikaye</h2>
+            <p>
+                Bazen zaman, hızla geçer ve geriye sadece izler bırakır. Ancak bazı izler kaybolur. 
+                Gerçek bir hayat yolculuğu, anıların içinden geçer. Hangi anlar kayboldu? Hangi hatıralar silindi? 
+                Şimdi, kaybolan zamanı geri getirmek ve geçmişin izini bulmak için bir yolculuğa çıkma zamanı!
+            </p>
+            <button class="close-btn" id="close-story-btn">Kapat</button>
+        </div>
+    </div>
+
+    <script>
+        // Başlat Butonuna Tıklama İşlevi
+        document.getElementById("start-btn").addEventListener("click", function() {
+            document.querySelector(".intro-screen").style.opacity = 0;
+            setTimeout(function() {
+                window.location.href = "https://penia3001.github.io/Word_Quest.github.io/"; // Oyun sayfasına yönlendirme
+            }, 1000); // Fade-out animasyonunun tamamlanmasını bekle
+        });
+
+        // Hikaye Butonuna Tıklama İşlevi
+        document.getElementById("about-btn").addEventListener("click", function() {
+            document.getElementById("story-popup").style.display = "block";
+            document.querySelector(".overlay").style.visibility = "visible";
+        });
+
+        // Hikaye Pop-up Kapatma
+        document.getElementById("close-story-btn").addEventListener("click", function() {
+            document.getElementById("story-popup").style.display = "none";
+            document.querySelector(".overlay").style.visibility = "hidden";
+        });
+    </script>
+</body>
+</html>
